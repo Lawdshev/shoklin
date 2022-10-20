@@ -1,20 +1,10 @@
-import MenuBar from './Components/Navbar';
-import Hero from './Components/Hero';
-import Hero2 from './Components/Hero2';
 import './App.css';
-import Footer from './Footer';
-import Delivery from './Delivery';
-import VIP from './VIP';
+import Home from './Pages/Home'
 
 function App() {
   return (
     <div className="App">
-      <MenuBar/>
-      <Hero/>
-      <Hero2/>
-      <VIP />
-      <Delivery />
-      <Footer />
+     <Home/>
     </div>
   );
 }
