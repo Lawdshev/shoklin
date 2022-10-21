@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {Link} from "react-router-dom"
 
 function MenuBar() {
   return (
@@ -14,11 +15,11 @@ function MenuBar() {
           <Nav
             className="pt-8 lg:pt-1 mx-auto w-3/5 h-3/5 items-center justify-between px-4 lg:ml-10 font-medium text-medium"
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Service</Nav.Link>
-            <Nav.Link href="#action1">Pricing</Nav.Link>
-            <Nav.Link href="#action2">About Us</Nav.Link>
-            <Nav.Link href="#action1">My Account</Nav.Link>
+            <Link to="/" >Home</Link>
+            <Link to="/">Service</Link>
+            <Link to="/">Pricing</Link>
+            <Link to="/">About Us</Link>
+            <Link to="/">My Account</Link>
           </Nav>
           <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full">Order Now</Button>
         </Navbar.Collapse>
