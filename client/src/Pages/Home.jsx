@@ -8,13 +8,11 @@ import VIP from '../Components/VIP';
 function App() {
   return (
     <div className="App">
-      <MenuBar/>
       <Hero/>
       <Hero2/>
       <hr/>
       <VIP />
       <Delivery />
-      <Footer />
     </div>
   );
 }

@@ -1,12 +1,11 @@
 import React from 'react';
-import { FormControl } from 'react-bootstrap';
 import '../Styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 function Delivery () {
   return (
-    <div className='h-screen bg-cover text-[#54d2d2] bg-no-repeat form flex items-center justify-center px-4'>
+    <div className='h-screen bg-cover text-[#54d2d2] bg-no-repeat form flex items-center justify-center px-4' id="delivery">
     <Form className='bg-white p-4 rounded-2xl'>
       <h1 className='text-2xl'>Pickup & Delivery</h1>
       <p className='text-lg'>Save more time with our pickup and delivery service</p>
