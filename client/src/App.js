@@ -5,7 +5,9 @@ import Vip from './Pages/Vip';
 import MyOrders from './Pages/MyOrders';
 import MakeOrder from './Pages/MakeOrder';
 import MenuBar from './Components/Navbar';
-import Footer from './Components/Footer'
+import Footer from './Components/Footer';
+import Service from './Pages/Service'
+import DryCleaning from './Pages/DryCleaning';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
           <Route path="/Vip" element={<Vip/>} />
           <Route path="/MyOrders" element={<MyOrders/>} />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
+          <Route path="/Payment" element={<Payment/>} />
+          <Route path="/Service" element={<Service/>} />
+          <Route path="/DryCleaning" element={<DryCleaning/>} />
         </Routes>
         <Footer />
       </Router>
