@@ -16,7 +16,7 @@ function MenuBar() {
             className="pt-8 lg:pt-1 mx-auto w-3/5 h-3/5 items-center justify-between px-4 lg:ml-10 font-medium text-medium"
           >
             <Link to="/" >Home</Link>
-            <Link to="/">Service</Link>
+            <Link to="/Service">Service</Link>
             <Link to="/">Pricing</Link>
             <Link to="/">About Us</Link>
             <Link to="/">My Account</Link>
