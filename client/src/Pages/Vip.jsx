@@ -1,14 +1,14 @@
 import React from 'react'
 
-function Payment() {
+function Vip() {
   return (
     <>
-    <div className="flex-col lg:flex lg:flex-row p-5">
-        <div className='w-full h-96 p-2 bg-gradient-to-b from-[#cbf8f8] to-white border-solid border-2 border-black lg:w-1/2 lg:bg-gradient-to-b'>
-            <h1 className="font-bold text-3xl lg:text-4xl mb-4">
+    <div className="flex-col justify-center lg:flex lg:flex-row p-3 bg-[#d9e0e0]">
+        <div className='w-full h-96 bg-gradient-to-b from-[#cbf8f8] to-white border-solid border-2 border-[#54d2d2] lg:w-2/5 lg:bg-gradient-to-b p-4 mt-4'>
+            <h1 className="font-bold text-2xl lg:text-4xl mb-2">
             Special VIP offer
             </h1>
-            <ul className='text-lg mb-4'>
+            <ul className='text-md lg:text-lg mb-4'>
             <li><i className='fa-solid fa-list-check mr-2'></i> enjoy our 24hours cleaning service</li> 
             <li><i className='fa-solid fa-list-check mr-2'></i> Automatic billing</li>
             <li><i className='fa-solid fa-list-check mr-2'></i> effective and efficient check out</li>
@@ -16,14 +16,14 @@ function Payment() {
             </ul>
             <p className='text-lg break-words'>Subscribe to our VIP plan now for just <b className='bg-[#54d2d2] px-2 font-xl'>$200/month</b> to enjoy the above benefit</p>
         </div>      
-        <div className="w-full mt-4 lg:w-1/2 lg:mt-0 ">
-            <div className="col-lg-6 mx-auto w-full lg:w-4/5">
+        <div className="w-full lg:w-1/2 mt-4 ">
+            <div className="col-lg-6 mx-auto w-full lg:w-4/5 border-2 border-[#54d2d2] bg-[#54d2d2]">
                 <div className="card ">
                     <div className="card-header">
                         <div className="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                             <ul role="tablist" className="nav bg-light nav-pills rounded nav-fill mb-3">
-                                <li className="nav-item"> <a data-toggle="pill" href="#credit-card" className="nav-link "> <i className="fas fa-credit-card mr-2"></i> Credit Card </a> </li>
-                                <li className="nav-item"> <a data-toggle="pill" href="#paypal" className="nav-link "> <i className="fab fa-paypal mr-2"></i> Paypal </a> </li>
+                                <li className="nav-item"> <a data-toggle="pill" href="#credit-card" className="nav-link text-[#54d2d2]"> <i className="fas fa-credit-card mr-2 text-[#54d2d2]"></i> Credit Card </a> </li>
+                                <li className="nav-item text-[#54d2d2]"> <a data-toggle="pill" href="#paypal" className="nav-link text-[#54d2d2]"> <i className="fab fa-paypal mr-2 text-[#54d2d2]"></i> Paypal </a> </li>
                             </ul>
                         </div>
                     
@@ -45,13 +45,13 @@ function Payment() {
                                             <div className="form-group"> <label><span className="hidden-xs">
                                                         <h6>Expiration Date</h6>
                                                     </span></label>
-                                                <div className="input-group"> <input type="month" placeholder="MM" name="" className="form-control" required/></div>
+                                                <div className="input-group"> <input type="month" placeholder="MM" name="" className="form-control " required/></div>
                                             </div>
                                         </div>
                                         <div className="col-sm-4">
                                             <div className="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                                                     <h6>CVV <i className="fa fa-question-circle d-inline"></i></h6>
-                                                </label> <input type="number" required className="form-control"/> </div>
+                                                </label> <input type="number" required className="form-control "/> </div>
                                         </div>
                                     </div>
                                     <div className="card-footer"> <button type="button" className="text-[#54d2d2]"> Confirm Payment </button> </div>
@@ -82,4 +82,4 @@ function Payment() {
   )
 }
 
-export default Payment;
+export default Vip;
