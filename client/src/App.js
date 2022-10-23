@@ -19,7 +19,7 @@ function App() {
           <Route path="/Vip" element={<Vip/>} />
           <Route path="/MyOrders" element={<MyOrders/>} />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
-          <Route path="/Payment" element={<Payment/>} />
+          {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/DryCleaning" element={<DryCleaning/>} />
         </Routes>
