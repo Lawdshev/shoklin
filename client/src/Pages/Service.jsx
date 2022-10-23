@@ -2,8 +2,8 @@ import React from 'react'
 import ServiceCard from '../Components/ServiceCard';
 import dryCleaningImage from '../Images/DryCleaning.png';
 import tailoringImage from '../Images/tailoring.jpg';
-import shoeCleaningImage from '../Images/shoeCleaning.jpg';
-import clothStorageImage from '../Images/clothStorage.png'
+import flatIroningImage from '../Images/flatIroning.png';
+import clothStorageImage from '../Images/clothStorage.png';
 
 const services =[
     {
@@ -20,12 +20,12 @@ const services =[
     },
     {
         id: 3,
-        img: shoeCleaningImage,
-        name:'Shoes cleaning & repair',
-        description: 'Keep your shoes looking new. Our specialists clean and repair. Including soles and heels.'  
+        img: flatIroningImage,
+        name:'Flat Ironing',
+        description: 'We make your life simpler by undertaking ironing work at the most affordable rate at your convenience.'  
     },
     {
-        id: 3,
+        id: 4,
         img: clothStorageImage,
         name:'Cloth Storage',
         description: 'We provide effective and efficient storage facilities for our VIP customers'  
