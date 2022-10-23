@@ -7,7 +7,7 @@ import MakeOrder from './Pages/MakeOrder';
 import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'
-import DryCleaning from './Pages/DryCleaning';
+import PriceList from './Pages/PriceList';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/MakeOrder" element={<MakeOrder/>} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
-          <Route path="/DryCleaning" element={<DryCleaning/>} />
+          <Route path="/PriceList" element={<PriceList/>} />
         </Routes>
         <Footer />
       </Router>

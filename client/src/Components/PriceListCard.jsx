@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DryCleaningCard(props) {
+function PriceListCard(props) {
   return (
         <div className='h-64 w-full md:w-64 flex items-center justify-around md:flex-col md:h-72 md:mt-4'>
             <img src={props.img} className='h-52 w-52 rounded-full'/>
@@ -12,4 +12,4 @@ function DryCleaningCard(props) {
   )
 }
 
-export default DryCleaningCard
+export default PriceListCard;

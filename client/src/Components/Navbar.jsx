@@ -18,7 +18,7 @@ function MenuBar() {
           >
             <Link to="/" >Home</Link>
             <Link to="/Service">Service</Link>
-            <Link to="/">Pricing</Link>
+            <Link to="/PriceList">Pricing</Link>
             <Link to="/">About Us</Link>
             <Link to="/MyOrders">My Account</Link>
           </Nav>

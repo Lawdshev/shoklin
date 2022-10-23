@@ -13,42 +13,158 @@ import shorts from '../Images/shorts.jpg';
 import uniform from '../Images/uniform.jpg';
 import completeBeddings from '../Images/completeBeddings.jpg';
 import curtains from '../Images/curtains.jpg';
+import agbada from '../Images/agbada.jpg';
+import menNative from '../Images/menNative.jpg';
+import womenNative from '../Images/womenNative.jpg';
+import weddingDress from '../Images/weddingDress.jpg';
 
-export const priceList = [
+export const DryCleaningPriceList = [
     {
         id: 1,
         img : shirt,
-        price : 250,
-        name : 'Shirt'
+        price : 500,
+        name : 'Shirt/Tops'
     },
     {
         id: 2,
         img : pant,
-        price : 250,
+        price : 500,
         name : 'Pants'
     },
     {
         id: 3,
         img : jacket,
-        price : 300,
+        price : 500,
         name : 'Jacket'
     },
     {
         id: 4,
         img : completeSuit,
-        price : 1000,
+        price : 1500,
         name : 'Complete Suit'
     },
     {
         id: 5,
         img : gown,
-        price : 400,
+        price : 800,
         name : 'Gown'
     },
     {
         id: 6,
         img : skirt,
-        price : 250,
+        price : 500,
+        name : 'Skirt'
+    },
+    {
+        id: 7,
+        img : sweater,
+        price : 700,
+        name : 'Sweater'
+    },
+    {
+        id: 8,
+        img : scarf,
+        price : 200,
+        name : 'Scarf'
+    },
+    {
+        id: 9,
+        img : denimJacket,
+        price : 750,
+        name : 'Denim Jacket'
+    },
+    {
+        id: 10,
+        img : denimTrouser,
+        price : 750,
+        name : 'denim trouser'
+    },
+    {
+        id: 11,
+        img : shorts,
+        price : 350,
+        name : 'Shorts'
+    },
+    {
+        id: 12,
+        img : uniform,
+        price : 1000,
+        name : 'Uniform'
+    },
+    {
+        id: 13,
+        img : completeBeddings,
+        price : 3000,
+        name : 'Beddings'
+    },
+    {
+        id: 14,
+        img : curtains,
+        price : 1000,
+        name : 'Curtains'
+    },
+    {
+        id: 15,
+        img : agbada,
+        price : 1500,
+        name : 'Agbada Outfit'
+    },
+    {
+        id: 16,
+        img : menNative,
+        price : 1000,
+        name : 'Men Natives'
+    },
+    {
+        id: 17,
+        img : womenNative,
+        price : 1500,
+        name : 'Women Natives'
+    },
+    {
+        id: 18,
+        img : weddingDress,
+        price : 5000,
+        name : 'Wedding Dress'
+    },
+
+]
+
+export const ironingPriceList = [
+    {
+        id: 1,
+        img : shirt,
+        price : 200,
+        name : 'Shirt/Tops'
+    },
+    {
+        id: 2,
+        img : pant,
+        price : 200,
+        name : 'Pants'
+    },
+    {
+        id: 3,
+        img : jacket,
+        price : 200,
+        name : 'Jacket'
+    },
+    {
+        id: 4,
+        img : completeSuit,
+        price : 500,
+        name : 'Complete Suit'
+    },
+    {
+        id: 5,
+        img : gown,
+        price : 200,
+        name : 'Gown'
+    },
+    {
+        id: 6,
+        img : skirt,
+        price : 200,
         name : 'Skirt'
     },
     {
@@ -66,44 +182,62 @@ export const priceList = [
     {
         id: 9,
         img : denimJacket,
-        price : 350,
+        price : 250,
         name : 'Denim Jacket'
     },
     {
         id: 10,
         img : denimTrouser,
-        price : 350,
+        price : 250,
         name : 'denim trouser'
     },
     {
         id: 11,
-        img : neckTie,
-        price : 100,
-        name : 'Neck Tie'
-    },
-    {
-        id: 12,
         img : shorts,
         price : 150,
         name : 'Shorts'
     },
     {
-        id: 13,
+        id: 12,
         img : uniform,
-        price : 600,
+        price : 300,
         name : 'Uniform'
     },
     {
-        id: 14,
+        id: 13,
         img : completeBeddings,
-        price : 2000,
-        name : 'CompleteBeddings'
+        price : 1000,
+        name : 'Beddings'
+    },
+    {
+        id: 14,
+        img : curtains,
+        price : 400,
+        name : 'Curtains'
     },
     {
         id: 15,
-        img : curtains,
-        price : 700,
-        name : 'Curtains'
+        img : agbada,
+        price : 500,
+        name : 'Agbada Outfit'
+    },
+    {
+        id: 16,
+        img : menNative,
+        price : 400,
+        name : 'Men Natives'
+    },
+    {
+        id: 17,
+        img : womenNative,
+        price : 500,
+        name : 'Women Natives'
+    },
+    {
+        id: 18,
+        img : weddingDress,
+        price : 2000,
+        name : 'Wedding Dress'
     },
 
 ]
