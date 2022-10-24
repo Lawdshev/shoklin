@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Pages/Home';
 import Vip from './Pages/Vip';
 import MyOrders from './Pages/MyOrders';
-import MakeOrder from './Pages/MakeOrder';
+import DryCleaning from './Pages/DryCleaning';
+import Repair from './Pages/Repair';
 import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'
@@ -12,6 +13,7 @@ import SignIn from './Pages/SignIn';
 import Logout from './Pages/Logout';
 import { UserAuthContextProvider } from "./contexts/authContext";
 import ProtectedRoute from './Utilities/protectedRoute';
+import Ironing from './Pages/Ironing';
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
               <MyOrders/>
             </ProtectedRoute>
           } />
-          <Route path="/MakeOrder" element={<MakeOrder/>} />
+          <Route path="/DryCleaning" element={<DryCleaning/>} />
+          <Route path="/Repair" element={<Repair/>} />
+          <Route path="/Ironing" element={<Ironing/>} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/Logout" element={<Logout />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
