@@ -1,35 +1,6 @@
 import React from 'react';
 import OrderComp from '../Components/orderComp';
-
-const categories = [{
-  name: 'Tops(shirts,blouses,etc)',
-  price: 300
-},
-{
-  name: 'Gowns and skirts(short gown,etc)',
-  price: 500
-},
-{
-  name: 'Agbada & Suits',
-  price: 1000
-},
-{
-  name: 'Trousers(Pants,Jeans e.t.c)',
-  price: 500
-},
-{
-  name: 'Native(without agbada)',
-  price: 500
-},
-{
-  name: 'Curtains and beddings',
-  price: 700
-},
-{
-  name: 'Wedding Dress',
-  price: 700
-},
-]
+import {DryCleaningPriceList} from '../Utilities/priceList'
 
 function MakeOrder() {
   return (
@@ -40,7 +11,7 @@ function MakeOrder() {
           <div className="left bg-[#54d2d2] w-full lg:w-2/5 p-2">
             <p className='font-semibold'>categories</p>
             {
-              categories.map((cat)=>{
+              DryCleaningPriceList.map((cat)=>{
                 return <OrderComp key={cat.name} {...cat}/>
               })
             }
