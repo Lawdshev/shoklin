@@ -8,6 +8,7 @@ import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'
 import PriceList from './Pages/PriceList';
+import SignIn from './Pages/SignIn';
 import { UserAuthContextProvider } from "./contexts/authContext";
 import ProtectedRoute from './Utilities/protectedRoute';
 
@@ -26,6 +27,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
+          <Route path="/SignIn" element={<SignIn />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/PriceList" element={<PriceList/>} />

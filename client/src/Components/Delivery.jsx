@@ -24,7 +24,7 @@ function Delivery () {
       <Form.Group className="mb-3 w-full" controlId="formBasicAddress">
         <Form.Control type="text" placeholder="Enter Home Address" />
       </Form.Group>
-      <Button className='bg-[#54d2d2] p-2 border-none hover:bg-white hover:text-[#54d2d2] hover:shadow-2xl' type="submit">
+      <Button className='bg-[#54d2d2] p-2 border-none hover:bg-white hover:text-[#54d2d2] hover:shadow-2xl hover:border-solid hover:border-2 hover:border-[#54d2d2]' type="submit">
         Signup for free pickup/delivery
       </Button>
     </Form>   
