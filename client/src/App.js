@@ -9,6 +9,7 @@ import Footer from './Components/Footer';
 import Service from './Pages/Service'
 import PriceList from './Pages/PriceList';
 import SignIn from './Pages/SignIn';
+import Logout from './Pages/Logout';
 import { UserAuthContextProvider } from "./contexts/authContext";
 import ProtectedRoute from './Utilities/protectedRoute';
 
@@ -28,6 +29,7 @@ function App() {
           } />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
           <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/Logout" element={<Logout />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/PriceList" element={<PriceList/>} />
