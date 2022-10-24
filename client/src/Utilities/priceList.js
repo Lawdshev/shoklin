@@ -8,7 +8,6 @@ import sweater from '../Images/sweater.jpg';
 import scarf from '../Images/scarf.jpg';
 import denimJacket from '../Images/denimJacket.jpg';
 import denimTrouser from '../Images/denimTrouser.jpg';
-import neckTie from '../Images/neckTie.jpg';
 import shorts from '../Images/shorts.jpg';
 import uniform from '../Images/uniform.jpg';
 import completeBeddings from '../Images/completeBeddings.jpg';
