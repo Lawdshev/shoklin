@@ -8,6 +8,7 @@ import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'
 import PriceList from './Pages/PriceList';
+import SignIn from './Pages/SignIn';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/Vip" element={<Vip/>} />
           <Route path="/MyOrders" element={<MyOrders/>} />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
+          <Route path="/SignIn" element={<SignIn />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/PriceList" element={<PriceList/>} />
