@@ -15,7 +15,6 @@ function MenuBar() {
   const handleLogout = async () => {
     try {
       await logOut();
-      setButton('Sign In')
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -37,7 +36,9 @@ function MenuBar() {
             <Link to="/">About Us</Link>
             <Link to="/MyOrders">My Account</Link>
           </Nav>
-         { <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={()=> navigate('/SignIn')}>Sign In</Button>  } 
+         { !logIn ? <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={()=> navigate('/SignIn')}>Sign In</Button> 
+         :
+         <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={handleLogout}>log OUT</Button>} 
         </Navbar.Collapse>
       </Container>
     </Navbar>
