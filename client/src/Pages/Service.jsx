@@ -10,25 +10,28 @@ const services =[
         id: 1,
         img: dryCleaningImage,
         name:'Dry Cleaning',
-        description: 'High quality garment cleaning and care for an array of garment types and household items'  
+        description: 'High quality garment cleaning and care for an array of garment types and household items' ,
+        path : '/DryCleaning' 
     },
     {
         id: 2,
         img: tailoringImage,
         name:'Tailoring & Alterations',
-        description: 'Extend your garment investment with professional tailoring and alterations.'  
+        description: 'Extend your garment investment with professional tailoring and alterations.' ,
+        path : '/Repair'
     },
     {
         id: 3,
         img: flatIroningImage,
         name:'Flat Ironing',
-        description: 'We make your life simpler by undertaking ironing work at the most affordable rate at your convenience.'  
+        description: 'We make your life simpler by undertaking ironing work at the most affordable rate at your convenience.' ,
+        path : '/Ironing'
     },
     {
         id: 4,
         img: clothStorageImage,
         name:'Cloth Storage',
-        description: 'We provide effective and efficient storage facilities for our VIP customers'  
+        description: 'We provide effective and efficient storage facilities for our VIP customers', 
     },
     
 ]
