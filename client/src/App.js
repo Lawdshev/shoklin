@@ -9,16 +9,23 @@ import Footer from './Components/Footer';
 import Service from './Pages/Service'
 import PriceList from './Pages/PriceList';
 import SignIn from './Pages/SignIn';
+import { UserAuthContextProvider } from "./contexts/authContext";
+import ProtectedRoute from './Utilities/protectedRoute';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <UserAuthContextProvider>
         <MenuBar/>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/Vip" element={<Vip/>} />
-          <Route path="/MyOrders" element={<MyOrders/>} />
+          <Route path="/MyOrders" element={
+            <ProtectedRoute>
+              <MyOrders/>
+            </ProtectedRoute>
+          } />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
           <Route path="/SignIn" element={<SignIn />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
@@ -26,6 +33,7 @@ function App() {
           <Route path="/PriceList" element={<PriceList/>} />
         </Routes>
         <Footer />
+        </UserAuthContextProvider>
       </Router>
      
     </div>

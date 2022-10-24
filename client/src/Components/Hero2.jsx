@@ -1,6 +1,8 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Hero2() {
+    const navigate = useNavigate()
   return (
     <div className='h-screen relative flex justify-center bg-[#ffffff]'>
         <div className='hidden h-32 lg:h-40 bg-[#ffffffa8] w-4/5 absolute top-0 mx-auto rounded-t-xl lg:flex items-center justify-around shadow-xl'>
@@ -43,7 +45,7 @@ function Hero2() {
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/money-transfer.png"/>
                     <p>Great Services & Customers.</p>
                 </span>
-                <button className='text-white bg-[#54d2d2] w-48 md:w-56 py-2 rounded mt-3'>Make Your First Order</button>
+                <button className='text-white bg-[#54d2d2] w-48 md:w-56 py-2 rounded mt-3' onClick={()=> navigate('/Service')}>Make Your First Order</button>
                 </div>
             </div>
         </div>
