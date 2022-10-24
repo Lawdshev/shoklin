@@ -1,12 +1,19 @@
 import React from 'react'
+import { useUserAuth } from '../contexts/authContext';
+import { customerData } from '../Data/customerData';
 
 function MyOrders() {
+const {user} = useUserAuth();
+
+const customer = customerData.find((customer) => customer.Email == user.email)
+
+
   return (
     <div className='flex flex-col justify-around lg:flex-row p-4 min-h-screen'>
         <div className='bg-[#54d2d2] w-full lg:w-2/5 p-4 ml-2'>
           <div className="flex  w-full justify-around items-center text-xl font-bold">
             <div className="rounded-full bg-red-100 h-40 w-40"></div>
-            <h3 className='text-white'>Welcome Sherif...</h3>  
+            <h3 className='text-white'>{`Welcome`}</h3>  
           </div>
           <div className='flex flex-row w-fit mt-2 text-white border-2 border-[#54d2d2]'>
             <div className=' p-2 flex flex-col justify-around h-60'>
@@ -15,9 +22,9 @@ function MyOrders() {
               <p>Phone Number:</p> 
             </div>
             <div  className=' ml-1 p-2 flex flex-col justify-around h-60'>
-              <p>Pick Up Name:</p>
-              <p>Pick Up Adress:</p>
-              <p>Phone Number:</p> 
+              <p>{ customer.name}:</p>
+              <p>{customer.address}:</p>
+              <p>{customer.phone}:</p> 
             </div> 
           </div>
           <button className='text-[#54d2d2] rounded-lg p-2 bg-white'>Edit Information</button>

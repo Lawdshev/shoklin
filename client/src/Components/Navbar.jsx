@@ -8,7 +8,7 @@ import {Link,useNavigate} from "react-router-dom";
 import { useUserAuth } from '../contexts/authContext';
 
 function MenuBar() {
-  const {logIn} = useUserAuth()
+  const {user} = useUserAuth()
   const navigate = useNavigate()
   const {logOut} = useUserAuth();
 
@@ -36,9 +36,9 @@ function MenuBar() {
             <Link to="/">About Us</Link>
             <Link to="/MyOrders">My Account</Link>
           </Nav>
-         { !logIn ? <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={()=> navigate('/SignIn')}>Sign In</Button> 
+         { !user ? <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={()=> navigate('/SignIn')}>Sign In</Button> 
          :
-         <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={handleLogout}>log OUT</Button>} 
+         <Button className="hidden fon lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-[#357575] border-none rounded-full" onClick={handleLogout}>log Out</Button>} 
         </Navbar.Collapse>
       </Container>
     </Navbar>
