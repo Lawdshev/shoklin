@@ -8,22 +8,30 @@ import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'
 import PriceList from './Pages/PriceList';
+import { UserAuthContextProvider } from "./contexts/authContext";
+import ProtectedRoute from './Utilities/protectedRoute';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <UserAuthContextProvider>
         <MenuBar/>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/Vip" element={<Vip/>} />
-          <Route path="/MyOrders" element={<MyOrders/>} />
+          <Route path="/MyOrders" element={
+            <ProtectedRoute>
+              <MyOrders/>
+            </ProtectedRoute>
+          } />
           <Route path="/MakeOrder" element={<MakeOrder/>} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/PriceList" element={<PriceList/>} />
         </Routes>
         <Footer />
+        </UserAuthContextProvider>
       </Router>
      
     </div>

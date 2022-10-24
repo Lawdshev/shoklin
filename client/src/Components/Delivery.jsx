@@ -2,8 +2,11 @@ import React from 'react';
 import '../Styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { customerData } from '../Data/customerData';
 
 function Delivery () {
+  
+
   return (
     <div className='h-screen bg-cover text-[#54d2d2] bg-no-repeat form flex items-center justify-center px-4' id="delivery">
     <Form className='bg-white p-4 rounded-2xl'>
@@ -16,7 +19,7 @@ function Delivery () {
         <Form.Control type="text" placeholder="Your full Name" />
       </Form.Group>
       <Form.Group className="mb-3 w-full" controlId="formBasicNumber">
-        <Form.Control type="number" placeholder="Your Phone number" />
+        <Form.Control type="tel" pattern="[0-9]{11}" placeholder="Your Phone number" />
       </Form.Group>
       <Form.Group className="mb-3 w-full" controlId="formBasicAddress">
         <Form.Control type="text" placeholder="Enter Home Address" />

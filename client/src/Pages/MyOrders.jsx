@@ -37,6 +37,7 @@ function MyOrders() {
                 <p>Pick Up Name:</p>
                 <p>Pick Up Adress:</p>
                 <p>Phone Number:</p> 
+                <p>Total Price:</p> 
               </div>
               <div  className=' ml-1 p-2 flex flex-col justify-around h-60'>
                 <p>OrderId: </p>
@@ -44,7 +45,8 @@ function MyOrders() {
                 <p>number Of Clothes:</p>
                 <p>Pick Up Name:</p>
                 <p>Pick Up Adress:</p>
-                <p>Phone Number:</p> 
+                <p>Phone Number:</p>
+                <p>Total Price:</p> 
               </div> 
             </div>
           </div>
