@@ -1,17 +1,28 @@
 import React,{useEffect, useState} from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Ticket from '../Components/Ticket';
+import { useUserAuth } from '../contexts/authContext';
 
 function MyOrders() {
+  const {user} = useUserAuth();
+  const navigate = useNavigate()
   const [customer,setCustomer] = useState({})
   const [tickets,setTickets] = useState([])
+  
   useEffect(() => {
     fetch('http://localhost:8080/customers')
     .then(res =>  res.json())
     .then((data )=> {
-      setCustomer(data[0])
-      setTickets(data[0].tickets)
+      const customer = data.find(c=>c.email == user.email);
+      if(!customer){
+        alert("please siign in to continue")
+        navigate('/SignIn')
+      }
+      setCustomer(customer)
+      setTickets(customer.tickets)
     })
-  }, [])
+     
+  }, [user.email])
   
 
 
@@ -22,20 +33,28 @@ function MyOrders() {
             <div className="rounded-full bg-red-100 h-40 w-40"></div>
             <h3 className='text-white'>Welcome {customer.name}</h3>  
           </div>
-          <div className='flex flex-row w-fit mt-2 text-white border-2 border-[#54d2d2]'>
+          <div className='flex flex-row w-fit mt-2 text-white border-2 border-[white]'>
             <div className=' p-2 flex flex-col justify-around h-60'>
-              <p>Full Name:</p>
+              <p className=''>Full Name:</p>
+              <hr />
               <p>Pick Up Address:</p>
+              <hr />
               <p>Phone Number:</p> 
+              <hr />
+              <p>Email Address:</p> 
             </div>
             <div  className=' ml-1 p-2 flex flex-col justify-around h-60'>
               
               <p>{customer.name}</p>
+              <hr />
               <p>{customer.address}</p>
+              <hr />
               <p>{customer.phone}</p> 
+              <hr />
+              <p>{customer.email}</p> 
             </div> 
           </div>
-          <button className='text-[#54d2d2] rounded-lg p-2 bg-white'>Edit Information</button>
+          <button className='text-[#54d2d2] rounded-lg p-2 bg-white mt-2'>Edit Information</button>
         </div>
         <div className=' w-full lg:w-3/5 min-h-screen'>
           <div className='flex w-full p-2  justify-between items-center ml-2'>

@@ -5,7 +5,6 @@ import '../Styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useUserAuth } from '../contexts/authContext';
-import { customerData } from '../Data/customerData';
 import { initialState,regReducer } from '../Reducers/registrationReducer';
 
 function Delivery () {
@@ -16,30 +15,19 @@ function Delivery () {
   const handleSubmit= async (e) => {
     e.preventDefault();
     dispatch({type: 'SET_ERROR', Payload: ''})
-    // const newUser = {
-    //   _id: customerData.length + 1,
-    //   name: state.name,
-    //   email: state.email,
-    //   phone: state.phone,
-    //   address: state.address,
-    //   ticket:[]
-    // }
      try {
        await signUp(state.email,state.password);
        axios.post('http://localhost:8080/customers',{
-        _id: customerData.length + 1,
         name: state.name,
         email: state.email,
         phone: state.phone,
         address: state.address,
-        ticket:[]
       }).then((res=> console.log(res.data)))
-       navigate('/MyOrders')
+       navigate('/SignIn')
      } catch (err) {
       dispatch({type: 'SET_ERROR', Payload: 'Please check all inputs and try again'})
      }
   }
-  
 
   return (
     <div className='h-screen bg-cover text-[#54d2d2] bg-no-repeat form flex items-center justify-center px-4' id="delivery">
