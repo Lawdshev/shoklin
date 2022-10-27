@@ -1,11 +1,18 @@
-import React from 'react'
-import { useUserAuth } from '../contexts/authContext';
-import { customerData } from '../Data/customerData';
+import React,{useEffect, useState} from 'react';
+import Ticket from '../Components/Ticket';
 
 function MyOrders() {
-const {user} = useUserAuth();
-
-const customer = customerData.find((customer) => customer.Email == user.email)
+  const [customer,setCustomer] = useState({})
+  const [tickets,setTickets] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:8080/customers')
+    .then(res =>  res.json())
+    .then((data )=> {
+      setCustomer(data[0])
+      setTickets(data[0].tickets)
+    })
+  }, [])
+  
 
 
   return (
@@ -13,7 +20,7 @@ const customer = customerData.find((customer) => customer.Email == user.email)
         <div className='bg-[#54d2d2] w-full lg:w-2/5 p-4 ml-2'>
           <div className="flex  w-full justify-around items-center text-xl font-bold">
             <div className="rounded-full bg-red-100 h-40 w-40"></div>
-            <h3 className='text-white'>{`Welcome`}</h3>  
+            <h3 className='text-white'>Welcome {customer.name}</h3>  
           </div>
           <div className='flex flex-row w-fit mt-2 text-white border-2 border-[#54d2d2]'>
             <div className=' p-2 flex flex-col justify-around h-60'>
@@ -22,9 +29,10 @@ const customer = customerData.find((customer) => customer.Email == user.email)
               <p>Phone Number:</p> 
             </div>
             <div  className=' ml-1 p-2 flex flex-col justify-around h-60'>
-              <p>{ customer.name}:</p>
-              <p>{customer.address}:</p>
-              <p>{customer.phone}:</p> 
+              
+              <p>{customer.name}</p>
+              <p>{customer.address}</p>
+              <p>{customer.phone}</p> 
             </div> 
           </div>
           <button className='text-[#54d2d2] rounded-lg p-2 bg-white'>Edit Information</button>
@@ -36,26 +44,7 @@ const customer = customerData.find((customer) => customer.Email == user.email)
           </div>
           {/* card section */}
           <div className='flex flex-col lg:ml-4 lg:flex-row flex-wrap items-center '>
-            <div className='flex ml-4 w-fit mt-2 bg-white border-2 border-[#54d2d2] text-[#54d2d2]'>
-              <div className=' p-2 flex flex-col justify-around h-60'>
-                <p>Order Id: </p>
-                <p>Type Of Order:</p>
-                <p>number Of Clothes:</p>
-                <p>Pick Up Name:</p>
-                <p>Pick Up Adress:</p>
-                <p>Phone Number:</p> 
-                <p>Total Price:</p> 
-              </div>
-              <div  className=' ml-1 p-2 flex flex-col justify-around h-60'>
-                <p>OrderId: </p>
-                <p>Type Of Order:</p>
-                <p>number Of Clothes:</p>
-                <p>Pick Up Name:</p>
-                <p>Pick Up Adress:</p>
-                <p>Phone Number:</p>
-                <p>Total Price:</p> 
-              </div> 
-            </div>
+            {tickets.length == 0? <p>no orders yet</p> : tickets.map((ticket)=> <Ticket key={ticket.orderId} {...ticket}/>) }
           </div>
         </div>
 

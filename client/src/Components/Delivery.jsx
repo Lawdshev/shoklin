@@ -1,4 +1,5 @@
 import React,{useReducer} from 'react';
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import '../Styles/form.css';
 import Button from 'react-bootstrap/Button';
@@ -15,18 +16,24 @@ function Delivery () {
   const handleSubmit= async (e) => {
     e.preventDefault();
     dispatch({type: 'SET_ERROR', Payload: ''})
-    const newUser = {
-      _id: customerData.length + 1,
-      name: state.name,
-      email: state.email,
-      phone: state.phone,
-      address: state.address,
-      ticket:[]
-    }
+    // const newUser = {
+    //   _id: customerData.length + 1,
+    //   name: state.name,
+    //   email: state.email,
+    //   phone: state.phone,
+    //   address: state.address,
+    //   ticket:[]
+    // }
      try {
        await signUp(state.email,state.password);
-       customerData.push(newUser)
-       console.log(customerData)
+       axios.post('http://localhost:8080/customers',{
+        _id: customerData.length + 1,
+        name: state.name,
+        email: state.email,
+        phone: state.phone,
+        address: state.address,
+        ticket:[]
+      }).then((res=> console.log(res.data)))
        navigate('/MyOrders')
      } catch (err) {
       dispatch({type: 'SET_ERROR', Payload: 'Please check all inputs and try again'})
@@ -59,7 +66,7 @@ function Delivery () {
           dispatch({type: 'SET_ADDRESS', Payload: e.target.value})
         }}/>
       </Form.Group>
-      <Form.Group className="mb-3 w-full" controlId="formBasicAddress">
+      <Form.Group className="mb-3 w-full" controlId="formBasicPassword">
         <Form.Control type="password" placeholder="Choose a password" value={state.password} onChange= {(e)=>{
           dispatch({type: 'SET_PASSWORD', Payload: e.target.value})
         }} />
