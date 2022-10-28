@@ -6,7 +6,6 @@ import {
  } from "firebase/auth";
 import { createContext,useContext, useState , useEffect, useReducer} from "react";
 import { auth } from "../Utilities/firebase";
-import { initialState,regReducer } from '../Reducers/registrationReducer';
 
 
 const userAuthContext = createContext();
