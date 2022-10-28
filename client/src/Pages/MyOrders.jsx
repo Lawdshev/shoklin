@@ -13,13 +13,16 @@ function MyOrders() {
     fetch('http://localhost:8080/customers')
     .then(res =>  res.json())
     .then((data )=> {
-      const customers = data.find(c => c.email == user.email)
-      setCustomer(customers)
-      setTickets(customers.tickets)
-    })
+      const customer = data.find(c=>c.email == user.email);
+      if(!customer){
+        alert("please sign in to continue")
+        navigate('/SignIn')
+      }
+      setCustomer(customer)
+      setTickets(customer.tickets)
+    })   
   }, [user.email])
   
-
 
   return (
     <div className='flex flex-col justify-around lg:flex-row p-4 min-h-screen'>
@@ -46,9 +49,7 @@ function MyOrders() {
         <div className=' w-full lg:w-3/5 min-h-screen'>
           <div className='flex w-full p-2  justify-between items-center ml-2'>
             <h3 className='text-lg font-bold text-[#54d2d2]'>My Orders</h3>
-            <button className='bg-[#54d2d2] rounded-lg p-2 text-white' onClick={() => {
-              navigate('/Service')
-            } }>New Order</button>
+            <button className='bg-[#54d2d2] rounded-lg p-2 text-white'  onClick={()=> navigate('/Service')}>New Order</button>
           </div>
           {/* card section */}
           <div className='flex flex-col lg:ml-4 lg:flex-row flex-wrap items-center '>

@@ -36,7 +36,8 @@ export const DryCleaningPriceList = [
         id: 3,
         img : jacket,
         price : 500,
-        name : 'Jacket'
+        name : 'Jacket',
+        qty : 0
     },
     {
         id: 4,
