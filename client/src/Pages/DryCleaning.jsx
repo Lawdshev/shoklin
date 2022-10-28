@@ -1,8 +1,18 @@
 import React from 'react';
 import OrderComp from '../Components/orderComp';
-import {DryCleaningPriceList} from '../Utilities/priceList'
+import {DryCleaningPriceList} from '../Utilities/priceList';
+import { useState } from 'react';
 
 function DryCleaning() {
+const [values, setValues] = useState([{}]);
+const [sum, setSum] = useState(0)
+
+const handleChange = (e) => {
+  e.preventDefault();
+  setValues([{...values, [e.target.qty] : e.target.value}]);
+}
+
+
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
       <h1 className='text-xl lg:text-2xl font-bold'>Dry Cleaning</h1>
@@ -12,7 +22,8 @@ function DryCleaning() {
             <p className='font-semibold'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} {...cat}/>
+                return <OrderComp key={cat.name} {...cat} value={values[DryCleaningPriceList.qty]}
+                onChange={handleChange}/>
               })
             }
           </div>
@@ -24,7 +35,7 @@ function DryCleaning() {
               </span> 
               <span className='flex justify-around w-full'>
                 <p className='font-semibold'>Total Price:</p>
-                <p className='font-semibold'>N3000</p>
+                <p className='font-semibold'>N{sum}</p>
               </span> 
             </div>
           </div>
