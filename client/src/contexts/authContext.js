@@ -4,8 +4,10 @@ import {
     signOut,
     onAuthStateChanged,
  } from "firebase/auth";
-import { createContext,useContext, useState , useEffect} from "react";
+import { createContext,useContext, useState , useEffect, useReducer} from "react";
 import { auth } from "../Utilities/firebase";
+import { initialState,regReducer } from '../Reducers/registrationReducer';
+
 
 const userAuthContext = createContext();
 
@@ -13,7 +15,7 @@ export function UserAuthContextProvider ({children}){
     const [user,setUser] = useState({});
 
     function signUp(email,password){
-        return createUserWithEmailAndPassword(auth, email,password);
+      return createUserWithEmailAndPassword(auth, email,password);
     }
     function logIn(email,password){
         return signInWithEmailAndPassword(auth,email,password)
