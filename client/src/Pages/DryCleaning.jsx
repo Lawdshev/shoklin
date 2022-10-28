@@ -12,6 +12,7 @@ const handleChange = (e) => {
   setValues([{...values, [e.target.qty] : e.target.value}]);
 }
 
+setSum(sum)
 
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
