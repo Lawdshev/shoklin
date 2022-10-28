@@ -1,16 +1,21 @@
 import React from 'react';
 import OrderComp from '../Components/orderComp';
 import {DryCleaningPriceList} from '../Utilities/priceList';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function DryCleaning() {
-const [values, setValues] = useState([{}]);
-const [sum, setSum] = useState(0)
-
-const handleChange = (e) => {
-  e.preventDefault();
-  setValues([{...values, [e.target.qty] : e.target.value}]);
-}
+  const [numberOfItems, setNumberOfItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const sumQty=() => {
+    let sumItem = 0
+    DryCleaningPriceList.forEach(item=> sumItem += parseInt(item.qty) );
+    setNumberOfItems(sumItem)  
+  }
+  const sumPrice=() => {
+    let sumItem = 0
+    DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
+    setTotalPrice(sumItem)  
+  }
 
 setSum(sum)
 
@@ -23,8 +28,7 @@ setSum(sum)
             <p className='font-semibold'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} {...cat} value={values[DryCleaningPriceList.qty]}
-                onChange={handleChange}/>
+                return <OrderComp key={cat.name} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
               })
             }
           </div>
@@ -32,11 +36,11 @@ setSum(sum)
             <div className='flex flex-col w-full'> 
               <span className='flex justify-around w-full px-3'>
                 <p  className='font-semibold'>Number of items:</p>
-                <p  className='font-semibold ml-5'>30</p>
+                <p  className='font-semibold ml-5'>{numberOfItems}</p>
               </span> 
               <span className='flex justify-around w-full'>
                 <p className='font-semibold'>Total Price:</p>
-                <p className='font-semibold'>N{sum}</p>
+                <p className='font-semibold'>N{totalPrice}</p>
               </span> 
             </div>
           </div>
