@@ -1,11 +1,43 @@
 import React from 'react';
+import axios from "axios"
 import OrderComp from '../Components/orderComp';
 import {DryCleaningPriceList} from '../Utilities/priceList';
 import { useState,useEffect } from 'react';
+import { useUserAuth } from '../contexts/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function DryCleaning() {
+  const navigate = useNavigate()
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const {user} = useUserAuth();
+  const [customer,setCustomer] = useState({})
+  console.log(customer)
+  const findUser=()=>{
+    console.log(customer)
+    fetch('http://localhost:8080/customers')
+    .then(res =>  res.json())
+    .then((data )=> {
+      const customer = data.find(c=>c.email === user.email);
+      if(!customer){
+        alert("please sign in to continue")
+        navigate('/SignIn')
+      }
+      setCustomer(customer)
+      console.log(customer._id)
+      try {
+        axios.post(`http://localhost:8080/customers/${customer._id}/addOrder`,{
+        typeOfOrder: "Dry Cleaning",
+        numberOfClothes: numberOfItems,
+        price: totalPrice
+        })
+        console.log('found?');
+      } catch (error) {
+        console.log(error)
+      }
+    })   
+  }
+  
 
   const sumQty=() => {
     let sumItem = 0
@@ -17,6 +49,9 @@ function DryCleaning() {
     let sumItem = 0
     DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
     setTotalPrice(sumItem)  
+  }
+  const handleOrder =()=>{
+    findUser()
   }
 
 
@@ -44,11 +79,10 @@ function DryCleaning() {
                   <p className='font-semibold'>N{totalPrice}</p>
                 </span> 
               </div>
-             <button className='bg-[#54d2d2] p-2 rounded-2xl'>Place Order</button>
+             <button className='bg-[#54d2d2] p-2 rounded-2xl' onClick={handleOrder}>Place Order</button>
           </div>
       </div>
     </div>
   )
 }
-
 export default DryCleaning
