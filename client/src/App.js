@@ -13,7 +13,8 @@ import SignIn from './Pages/SignIn';
 import Logout from './Pages/Logout';
 import { UserAuthContextProvider } from "./contexts/authContext";
 import ProtectedRoute from './Utilities/protectedRoute';
-import Ironing from './Pages/Ironing';
+import Tailoring from './Components/Tailoring'
+import Ironing from './Pages/Ironing'
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/DryCleaning" element={<DryCleaning/>} />
-          <Route path="/Repair" element={<Repair/>} />
+          <Route path="/Tailoring" element={<Tailoring/>} />
           <Route path="/Ironing" element={<Ironing/>} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/Logout" element={<Logout />} />
