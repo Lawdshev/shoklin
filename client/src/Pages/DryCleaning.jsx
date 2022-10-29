@@ -6,18 +6,19 @@ import { useState,useEffect } from 'react';
 function DryCleaning() {
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
   const sumQty=() => {
     let sumItem = 0
-    DryCleaningPriceList.forEach(item=> sumItem += parseInt(item.qty) );
+    DryCleaningPriceList.forEach(item=> sumItem += parseInt(item.qty));
     setNumberOfItems(sumItem)  
   }
+
   const sumPrice=() => {
     let sumItem = 0
     DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
     setTotalPrice(sumItem)  
   }
 
-setSum(sum)
 
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
