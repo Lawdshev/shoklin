@@ -18,7 +18,7 @@ const services =[
         img: tailoringImage,
         name:'Tailoring & Alterations',
         description: 'Extend your garment investment with professional tailoring and alterations.' ,
-        path : '/Repair'
+        path:'/Tailoring'
     },
     {
         id: 3,
