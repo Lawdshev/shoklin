@@ -29,7 +29,11 @@ function App() {
               <MyOrders/>
             </ProtectedRoute>
           } />
-          <Route path="/DryCleaning" element={<DryCleaning/>} />
+          <Route path="/DryCleaning" element={
+            <ProtectedRoute>
+              <DryCleaning/>
+          </ProtectedRoute>
+          } />
           <Route path="/Repair" element={<Repair/>} />
           <Route path="/Ironing" element={<Ironing/>} />
           <Route path="/SignIn" element={<SignIn />} />
@@ -40,10 +44,8 @@ function App() {
         </Routes>
         <Footer />
         </UserAuthContextProvider>
-      </Router>
-     
+      </Router>  
     </div>
   );
 }
-
 export default App;
