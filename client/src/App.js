@@ -37,7 +37,7 @@ function App() {
               <DryCleaning/>
           </ProtectedRoute>
           } />
-          <Route path="/Repair" element={<Repair/>} />
+          <Route path="/Tailoring" element={<Tailoring/>} />
           <Route path="/Ironing" element={
             <ProtectedRoute>
               <Ironing/>

@@ -3,8 +3,6 @@ import axios from "axios"
 import OrderComp from '../Components/orderComp';
 import {ironingPriceList} from '../Utilities/priceList';
 import { useState,useEffect } from 'react';
-import { useUserAuth } from '../contexts/authContext';
-import { useNavigate } from 'react-router-dom';
 
 function Ironing() {
   const navigate = useNavigate()
@@ -35,7 +33,6 @@ function Ironing() {
       }
     })   
   }
-  
 
   const sumQty=() => {
     let sumItem = 0
@@ -46,15 +43,23 @@ function Ironing() {
   const sumPrice=() => {
     let sumItem = 0
     ironingPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
-    setTotalPrice(sumItem)  
+    setTotalPrice(sumItem);
   }
   const handleOrder =()=>{
     findUser()
   }
 
+  const handleOrder =()=>{
+    findUser();
+    setOrder('Order Placed')
+    setTimeout(() => {
+      setOrder('Place Order')
+    }, 2000)
+  }
 
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
+
       <h1 className='text-xl lg:text-2xl font-bold'>Flat Ironing</h1>
       <h2 className='mt-2'>Choose the categories of the clothes you have for laundry and their quantities, we'll give you an estimate right before you place your Order</h2>
       <div className='flex flex-col items-center md:flex md:flex-row md:items-start justify-around w-full mt-8'>
@@ -81,6 +86,7 @@ function Ironing() {
           </div>
       </div>
     </div>
+  </div>
   )
 }
 export default Ironing
