@@ -12,7 +12,9 @@ function DryCleaning() {
   const [totalPrice, setTotalPrice] = useState(0);
   const {user} = useUserAuth();
   const [customer,setCustomer] = useState({})
-  console.log(customer)
+  const [order, setOrder] = useState('Place Order')
+
+ 
   const findUser=()=>{
     console.log(customer)
     fetch('http://localhost:8080/customers')
@@ -35,7 +37,7 @@ function DryCleaning() {
       } catch (error) {
         console.log(error)
       }
-    })   
+    }) 
   }
   
 
@@ -48,10 +50,14 @@ function DryCleaning() {
   const sumPrice=() => {
     let sumItem = 0
     DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
-    setTotalPrice(sumItem)  
+    setTotalPrice(sumItem) 
   }
   const handleOrder =()=>{
     findUser()
+    setOrder('Order Placed')
+    setTimeout(() => {
+      setOrder('Place Order')
+    }, 2000)
   }
 
 
@@ -64,22 +70,26 @@ function DryCleaning() {
             <p className='font-semibold self-center'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
+                return <OrderComp key={cat.name} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat} List={DryCleaningPriceList}/>
               })
             }
           </div>
-          <div className=" bg-white w-full lg:w-2/5 flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-xl h-[150px] items-center justify-around">
+          <div className=" bg-white w-full lg:w-2/5 flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-xl h-[250px] items-center justify-around">
               <div className='flex flex-col w-full'> 
                 <span className='flex justify-between w-full px-4'>
-                  <p  className='font-semibold'>Number of items:</p>
-                  <p  className='font-semibold ml-5'>{numberOfItems}</p>
-                </span> 
-                <span className='flex justify-between w-full px-4'>
-                  <p className='font-semibold'>Total Price:</p>
-                  <p className='font-semibold'>N{totalPrice}</p>
-                </span> 
+                    <p className='font-semibold'>Category</p>
+                    <p className='font-semibold'>Number Of Items</p>
+                  </span> 
+                  <span className='flex justify-between w-full px-4'>
+                    <p  className='font-semibold'>Total Number of items:</p>
+                    <p  className='font-semibold ml-5'>{numberOfItems}</p>
+                  </span>
+                  <span className='flex justify-between w-full px-4'>
+                    <p className='font-semibold'>Total Price:</p>
+                    <p className='font-semibold'>N{totalPrice}</p>
+                  </span>
               </div>
-             <button className='bg-[#54d2d2] p-2 rounded-2xl' onClick={handleOrder}>Place Order</button>
+             <button className='bg-[#54d2d2] py-2 px-4 rounded-xl' onClick={handleOrder}>{order}</button>
           </div>
       </div>
     </div>
