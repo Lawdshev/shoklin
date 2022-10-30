@@ -20,7 +20,7 @@ function OrderComp(props) {
   }
    
   useEffect(() => {
-    const item = props.List.find(c=>c.id == props.id) ;
+    const item = props.List.find(c=>c.id == props.id);
     value == '' || value < 0 ? item.qty = 0 :  item.qty = value;
     props.sumQty();
     props.sumPrice();

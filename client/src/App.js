@@ -13,8 +13,9 @@ import SignIn from './Pages/SignIn';
 import Logout from './Pages/Logout';
 import { UserAuthContextProvider } from "./contexts/authContext";
 import ProtectedRoute from './Utilities/protectedRoute';
-import Tailoring from './Components/Tailoring'
 import Ironing from './Pages/Ironing'
+import About from './Pages/About Us';
+import Message from './Components/Modal';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Router>
         <UserAuthContextProvider>
         <MenuBar/>
+        <Message/>
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/Vip" element={<Vip/>} />
@@ -36,12 +38,17 @@ function App() {
           </ProtectedRoute>
           } />
           <Route path="/Tailoring" element={<Tailoring/>} />
-          <Route path="/Ironing" element={<Ironing/>} />
+          <Route path="/Ironing" element={
+            <ProtectedRoute>
+              <Ironing/>
+            </ProtectedRoute>
+          } />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/Logout" element={<Logout />} />
           {/* <Route path="/Payment" element={<Payment/>} /> */}
           <Route path="/Service" element={<Service/>} />
           <Route path="/PriceList" element={<PriceList/>} />
+          <Route path="/About" element={<About/>} />
         </Routes>
         <Footer />
         </UserAuthContextProvider>
