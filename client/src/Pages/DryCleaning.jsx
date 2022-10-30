@@ -5,22 +5,23 @@ import {DryCleaningPriceList} from '../Utilities/priceList';
 import { useState,useEffect } from 'react';
 import { useUserAuth } from '../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
+import { useLaundryContext } from "../contexts/laundryContexts";
 
 function DryCleaning() {
   const navigate = useNavigate()
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const {user} = useUserAuth();
+  const {handleShow} = useLaundryContext()
   const [customer,setCustomer] = useState({})
-  console.log(customer)
+
   const findUser=()=>{
-    console.log(customer)
     fetch('http://localhost:8080/customers')
     .then(res =>  res.json())
     .then((data )=> {
       const customer = data.find(c=>c.email === user.email);
       if(!customer){
-        alert("please sign in to continue")
+        handleShow('Please Login To Continue',"red")
         navigate('/SignIn')
       }
       setCustomer(customer)
@@ -51,7 +52,16 @@ function DryCleaning() {
     setTotalPrice(sumItem)  
   }
   const handleOrder =()=>{
+    if (numberOfItems < 1) {
+      handleShow('You have not selected any item',"red");
+      return
+    }
     findUser()
+    handleShow('Order placed succesfully',"green");
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000);
+   
   }
 
 
@@ -64,7 +74,7 @@ function DryCleaning() {
             <p className='font-semibold self-center'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
+                return <OrderComp key={cat.name} List={DryCleaningPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
               })
             }
           </div>
