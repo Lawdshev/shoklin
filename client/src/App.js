@@ -4,7 +4,7 @@ import Home from './Pages/Home';
 import Vip from './Pages/Vip';
 import MyOrders from './Pages/MyOrders';
 import DryCleaning from './Pages/DryCleaning';
-import Repair from './Pages/Repair';
+import Tailoring from './Components/Tailoring';
 import MenuBar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Service from './Pages/Service'

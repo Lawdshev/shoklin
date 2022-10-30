@@ -92,7 +92,7 @@ function DryCleaning() {
                     <p className='font-semibold'>N{totalPrice}</p>
                   </span>
               </div>
-             <button className='bg-[#54d2d2] py-2 px-4 rounded-xl' onClick={handleOrder}>{order}</button>
+             <button className='bg-[#54d2d2] py-2 px-4 rounded-xl' onClick={handleOrder}>Place Order</button>
           </div>
       </div>
     </div>
