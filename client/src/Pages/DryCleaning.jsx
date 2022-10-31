@@ -14,10 +14,7 @@ function DryCleaning() {
   const {user} = useUserAuth();
   const {handleShow} = useLaundryContext()
   const [customer,setCustomer] = useState({});
-  const [itemsList,setItemsList] = useState([{
-    name: 'shev',
-    qty: 3
-  }])
+  const [itemsList,setItemsList] = useState([])
  
   console.log(itemsList);
   const findUser=()=>{
@@ -30,14 +27,12 @@ function DryCleaning() {
         navigate('/SignIn')
       }
       setCustomer(customer)
-      console.log(customer._id)
       try {
         axios.post(`http://localhost:8080/customers/${customer._id}/addOrder`,{
         typeOfOrder: "Dry Cleaning",
         numberOfClothes: numberOfItems,
         price: totalPrice
         })
-        console.log('found?');
       } catch (error) {
         console.log(error)
       }
@@ -56,6 +51,7 @@ function DryCleaning() {
     DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
     setTotalPrice(sumItem) 
   }
+
   const handleOrder =()=>{
     if (numberOfItems < 1) {
       handleShow('You have not selected any item',"red");
@@ -67,8 +63,6 @@ function DryCleaning() {
       window.location.reload()
     }, 2000);
   }
-  
-
 
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
@@ -79,7 +73,6 @@ function DryCleaning() {
             <p className='font-semibold self-center'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                console.log(itemsList)
                 return <OrderComp key={cat.name} List={DryCleaningPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat} itemsList={itemsList} setItemsList={setItemsList} />
               })
             }
@@ -91,12 +84,12 @@ function DryCleaning() {
                     <p className='font-semibold'>Number Of Items</p>
                   </span> 
                 {
-                  itemsList.length > 0? itemsList.map((item)=>{
-                   return <span>
+                  itemsList.length > 0 && itemsList.map((item)=>{
+                   return item.qty > 0 && <span>
                     <p>{item.name}</p>
                   <p>{item.qty}</p>
                    </span> 
-                  }): <p>Select items</p>
+                  })
                 }
                   <span className='flex justify-between w-full px-4'>
                     <p  className='font-semibold'>Total Number of items:</p>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useReducer } from 'react';
 import { useEffect } from 'react';
 
 
 function OrderComp(props) {
   const [value,setValue] = useState(0);
 
-  const increase = (e) => {
+  const increase = () => {
     setValue(prevState => prevState + 1);
     const item = props.List.find(c=>c.id == props.id);
     let obj = props.itemsList.find(c=>c.id == item.id)
@@ -22,14 +22,15 @@ function OrderComp(props) {
     if (value <= 0 ) {
       setValue(0)
     }  
-    const item = props.List.find(c=>c.id == props.id);
-    let obj = props.itemsList.find(c=>c.id == item.id)
-    if (obj.qty < 1) {
-      let obj = props.itemsList.find(c=>c.id == item.id)
-      props.setItemsList(props.itemsList.filter(item => item.name !== obj.name ));
-    } else{
-      return;
-    }
+    // const item = props.List.find(c=>c.id == props.id);
+    // let obj = props.itemsList.find(c=>c.id == item.id)
+    // if (obj.qty <= 0) {
+    //   let obj = props.itemsList.find(c=>c.id == item.id)
+    //   props.setItemsList(props.itemsList.filter(item => item.name !== obj.name ));
+    //   return
+    // } else{
+    //   return;
+    // }
   }
    
   useEffect(() => {
