@@ -8,14 +8,27 @@ function OrderComp(props) {
 
   const increase = (e) => {
     setValue(prevState => prevState + 1);
+    const item = props.List.find(c=>c.id == props.id);
+    let obj = props.itemsList.find(c=>c.id == item.id)
+    if (obj) {
+      return;
+    } else{
+      props.setItemsList(prevState=>[...prevState,item]);
+    }
   }
 
   const decrease = () => {
+    setValue(prevState => prevState - 1)
     if (value <= 0 ) {
       setValue(0)
-    }
-    {
-      setValue(prevState => prevState - 1)
+    }  
+    const item = props.List.find(c=>c.id == props.id);
+    let obj = props.itemsList.find(c=>c.id == item.id)
+    if (obj.qty < 1) {
+      let obj = props.itemsList.find(c=>c.id == item.id)
+      props.setItemsList(props.itemsList.filter(item => item.name !== obj.name ));
+    } else{
+      return;
     }
   }
    
