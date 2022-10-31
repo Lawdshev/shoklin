@@ -13,8 +13,13 @@ function DryCleaning() {
   const [totalPrice, setTotalPrice] = useState(0);
   const {user} = useUserAuth();
   const {handleShow} = useLaundryContext()
-  const [customer,setCustomer] = useState({})
-
+  const [customer,setCustomer] = useState({});
+  const [itemsList,setItemsList] = useState([{
+    name: 'shev',
+    qty: 3
+  }])
+ 
+  console.log(itemsList);
   const findUser=()=>{
     fetch('http://localhost:8080/customers')
     .then(res =>  res.json())
@@ -62,6 +67,7 @@ function DryCleaning() {
       window.location.reload()
     }, 2000);
   }
+  
 
 
   return (
@@ -73,7 +79,8 @@ function DryCleaning() {
             <p className='font-semibold self-center'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} List={DryCleaningPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
+                console.log(itemsList)
+                return <OrderComp key={cat.name} List={DryCleaningPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat} itemsList={itemsList} setItemsList={setItemsList} />
               })
             }
           </div>
@@ -83,6 +90,14 @@ function DryCleaning() {
                     <p className='font-semibold'>Category</p>
                     <p className='font-semibold'>Number Of Items</p>
                   </span> 
+                {
+                  itemsList.length > 0? itemsList.map((item)=>{
+                   return <span>
+                    <p>{item.name}</p>
+                  <p>{item.qty}</p>
+                   </span> 
+                  }): <p>Select items</p>
+                }
                   <span className='flex justify-between w-full px-4'>
                     <p  className='font-semibold'>Total Number of items:</p>
                     <p  className='font-semibold ml-5'>{numberOfItems}</p>
