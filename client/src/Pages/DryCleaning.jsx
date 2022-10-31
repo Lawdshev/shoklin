@@ -14,10 +14,7 @@ function DryCleaning() {
   const {user} = useUserAuth();
   const {handleShow} = useLaundryContext()
   const [customer,setCustomer] = useState({});
-  const [itemsList,setItemsList] = useState([{
-    name: 'shev',
-    qty: 3
-  }])
+  const [itemsList,setItemsList] = useState([{}])
  
   console.log(itemsList);
   const findUser=()=>{
@@ -75,8 +72,8 @@ function DryCleaning() {
       <h1 className='text-xl lg:text-2xl font-bold'>Dry Cleaning</h1>
       <h2 className='mt-2'>Choose the categories of the clothes you have for laundry and their quantities, we'll give you an estimate right before you place your Order</h2>
       <div className='flex flex-col items-center md:flex md:flex-row md:items-start justify-around w-full mt-8'>
-          <div className=" bg-white w-full lg:w-2/5 text-[#41acac] flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-2xl">
-            <p className='font-semibold self-center'>categories</p>
+          <div className=" bg-white w-full lg:w-2/5 text-[#41acac] flex flex-col shadow-2xl">
+            <p className='font-semibold self-center text-2xl mt-4'>categories</p>
             {
               DryCleaningPriceList.map((cat)=>{
                 console.log(itemsList)
@@ -84,7 +81,7 @@ function DryCleaning() {
               })
             }
           </div>
-          <div className=" bg-white w-full lg:w-2/5 flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-xl h-[250px] items-center justify-around">
+          <div className=" bg-white w-full lg:w-2/5 flex flex-col shadow-2xl py-2 items-center justify-around">
               <div className='flex flex-col w-full'> 
                 <span className='flex justify-between w-full px-4'>
                     <p className='font-semibold'>Category</p>
@@ -92,13 +89,13 @@ function DryCleaning() {
                   </span> 
                 {
                   itemsList.length > 0? itemsList.map((item)=>{
-                   return <span>
+                   return <span className='flex justify-between px-4'>
                     <p>{item.name}</p>
-                  <p>{item.qty}</p>
+                    <p>{item.qty}</p>
                    </span> 
                   }): <p>Select items</p>
                 }
-                  <span className='flex justify-between w-full px-4'>
+                  <span className='flex justify-between w-full px-4 mt-2'>
                     <p  className='font-semibold'>Total Number of items:</p>
                     <p  className='font-semibold ml-5'>{numberOfItems}</p>
                   </span>

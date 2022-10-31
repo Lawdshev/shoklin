@@ -1,20 +1,22 @@
 import React from 'react';
 import axios from "axios"
 import OrderComp from '../Components/orderComp';
-import {DryCleaningPriceList} from '../Utilities/priceList';
+import {ironingPriceList} from '../Utilities/priceList';
 import { useState,useEffect } from 'react';
 import { useUserAuth } from '../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
 import { useLaundryContext } from "../contexts/laundryContexts";
 
-function DryCleaning() {
+function Ironing() {
   const navigate = useNavigate()
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const {user} = useUserAuth();
   const {handleShow} = useLaundryContext()
-  const [customer,setCustomer] = useState({})
-
+  const [customer,setCustomer] = useState({});
+  const [itemsList,setItemsList] = useState([{}])
+ 
+  console.log(itemsList);
   const findUser=()=>{
     fetch('http://localhost:8080/customers')
     .then(res =>  res.json())
@@ -42,13 +44,13 @@ function DryCleaning() {
 
   const sumQty=() => {
     let sumItem = 0
-    DryCleaningPriceList.forEach(item=> sumItem += parseInt(item.qty));
+    ironingPriceList.forEach(item=> sumItem += parseInt(item.qty));
     setNumberOfItems(sumItem)  
   }
 
   const sumPrice=() => {
     let sumItem = 0
-    DryCleaningPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
+    ironingPriceList.forEach(item=> sumItem += (parseInt(item.qty) * item.price ));
     setTotalPrice(sumItem) 
   }
   const handleOrder =()=>{
@@ -62,28 +64,38 @@ function DryCleaning() {
       window.location.reload()
     }, 2000);
   }
+  
 
 
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
-      <h1 className='text-xl lg:text-2xl font-bold'>Dry Cleaning</h1>
+      <h1 className='text-xl lg:text-2xl font-bold'>Ironing</h1>
       <h2 className='mt-2'>Choose the categories of the clothes you have for laundry and their quantities, we'll give you an estimate right before you place your Order</h2>
       <div className='flex flex-col items-center md:flex md:flex-row md:items-start justify-around w-full mt-8'>
-          <div className=" bg-white w-full lg:w-2/5 text-[#41acac] flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-2xl">
-            <p className='font-semibold self-center'>categories</p>
+          <div className=" bg-white w-full lg:w-2/5 text-[#41acac] flex flex-col shadow-2xl">
+            <p className='font-semibold self-center text-2xl mt-4'>categories</p>
             {
-              DryCleaningPriceList.map((cat)=>{
-                return <OrderComp key={cat.name} List={DryCleaningPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat}/>
+              ironingPriceList.map((cat)=>{
+                console.log(itemsList)
+                return <OrderComp key={cat.name} List={ironingPriceList} sumQty={sumQty} sumPrice={sumPrice} id={cat.id} {...cat} itemsList={itemsList} setItemsList={setItemsList} />
               })
             }
           </div>
-          <div className=" bg-white w-full lg:w-2/5 flex flex-col border-[0.5px] border-solid border-[#bbb9b9] shadow-xl h-[250px] items-center justify-around">
+          <div className=" bg-white w-full lg:w-2/5 flex flex-col shadow-2xl py-2 items-center justify-around">
               <div className='flex flex-col w-full'> 
                 <span className='flex justify-between w-full px-4'>
                     <p className='font-semibold'>Category</p>
                     <p className='font-semibold'>Number Of Items</p>
                   </span> 
-                  <span className='flex justify-between w-full px-4'>
+                {
+                  itemsList.length > 0? itemsList.map((item)=>{
+                   return <span className='flex justify-between px-4'>
+                    <p>{item.name}</p>
+                    <p>{item.qty}</p>
+                   </span> 
+                  }): <p>Select items</p>
+                }
+                  <span className='flex justify-between w-full px-4 mt-2'>
                     <p  className='font-semibold'>Total Number of items:</p>
                     <p  className='font-semibold ml-5'>{numberOfItems}</p>
                   </span>
@@ -98,4 +110,4 @@ function DryCleaning() {
     </div>
   )
 }
-export default DryCleaning
+export default Ironing;
