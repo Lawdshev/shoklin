@@ -9,15 +9,16 @@ function MyOrders() {
   const [tickets,setTickets] = useState([]);
   const {handleShow} = useLaundryContext();
   const {user} = useUserAuth();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:8080/customers')
+    fetch('https://shoklin-server.onrender.com/customers')
     .then(res =>  res.json())
-    .then((data )=> {
+    .then((data)=> {
       const customer = data.find(c=>c.email == user.email);
       if(!customer){
-        handleShow()
+        handleShow("Please Sign In To Continue","red")
+        navigate('/SignIn')
       }
       setCustomer(customer)
       setTickets(customer.tickets)
@@ -26,7 +27,7 @@ function MyOrders() {
 
 
   return (
-    <div className='flex flex-col w-full pr-2 items-center justify-around lg:flex-row min-h-screen'>
+    <div className='flex flex-col w-full pr-2 items-center justify-around lg:flex-row h-screen'>
         <div className='bg-[#54d2d2] w-full flex flex-col items-center h-screen lg:w-1/3 p-2'>
           <div className="flex  flex-col items-center w-full justify-around text-xl font-bold">
             <div className="rounded-full bg-red-100 h-40 w-40 text-black"></div>  
@@ -58,7 +59,7 @@ function MyOrders() {
                 <p className='w-[25%] text-center'>Price</p>  
               </div> 
           {/* card section */}
-          <div className='flex flex-col lg:ml-4 lg:flex-row flex-wrap items-center '>
+          <div className='flex flex-col w-full lg:ml-4 lg:flex-row flex-wrap items-center '>
             { tickets? tickets.map((ticket)=> <Ticket key={ticket._orderId} {...ticket}/>) : 'no order yet' }
           </div>
         </div>
@@ -66,6 +67,4 @@ function MyOrders() {
     </div>
   )
 }
-export default MyOrders
-
-{/* <button className='bg-[#54d2d2] rounded-lg p-2 text-white mt-'  onClick={()=> navigate('/Service')}>New Order</button> */}
+export default MyOrders;
