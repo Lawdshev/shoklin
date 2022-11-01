@@ -22,15 +22,6 @@ function OrderComp(props) {
     if (value <= 0 ) {
       setValue(0)
     }  
-    // const item = props.List.find(c=>c.id == props.id);
-    // let obj = props.itemsList.find(c=>c.id == item.id)
-    // if (obj.qty <= 0) {
-    //   let obj = props.itemsList.find(c=>c.id == item.id)
-    //   props.setItemsList(props.itemsList.filter(item => item.name !== obj.name ));
-    //   return
-    // } else{
-    //   return;
-    // }
   }
    
   useEffect(() => {

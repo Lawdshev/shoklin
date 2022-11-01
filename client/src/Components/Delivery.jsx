@@ -17,12 +17,12 @@ function Delivery () {
     dispatch({type: 'SET_ERROR', Payload: ''})
      try {
        await signUp(state.email,state.password);
-       axios.post('http://localhost:8080/customers',{
+       axios.post('https://shoklin-server.onrender.com/customers',{
         name: state.name,
         email: state.email,
         phone: state.phone,
         address: state.address,
-      }).then((res=> console.log(res.data)))
+      }).then((res=> console.log('loading...')))
        navigate('/SignIn')
      } catch (err) {
       dispatch({type: 'SET_ERROR', Payload: 'Please check all inputs and try again'})
