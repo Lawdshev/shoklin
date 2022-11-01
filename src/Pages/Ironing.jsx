@@ -9,6 +9,7 @@ import { useLaundryContext } from "../contexts/laundryContexts";
 
 function Ironing() {
   const navigate = useNavigate()
+  const {setLoading} = useLaundryContext()
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const {user} = useUserAuth();
@@ -18,6 +19,7 @@ function Ironing() {
  
   console.log(itemsList);
   const findUser=()=>{
+    setLoading(true)
     fetch('https://shoklin-server.onrender.com/customers')
     .then(res =>  res.json())
     .then((data )=> {
@@ -37,6 +39,7 @@ function Ironing() {
         console.log(error)
       }
     }) 
+    setLoading(false)
   }
   
 
@@ -56,11 +59,11 @@ function Ironing() {
       handleShow('You have not selected any item',"red");
       return
     }
+    setLoading(true)
     findUser()
     handleShow('Order placed succesfully',"green");
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000);
+    setLoading(false);
+    navigate('/MyOrders')
   }
   
 

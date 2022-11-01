@@ -5,9 +5,11 @@ import '../Styles/form.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useUserAuth } from '../contexts/authContext';
+import { useLaundryContext } from '../contexts/laundryContexts';
 import { initialState,regReducer } from '../Reducers/registrationReducer';
 
 function Delivery () {
+  const {setLoading} = useLaundryContext()
   const [state, dispatch] = useReducer(regReducer,initialState)
   const {signUp} = useUserAuth();
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ function Delivery () {
   const handleSubmit= async (e) => {
     e.preventDefault();
     dispatch({type: 'SET_ERROR', Payload: ''})
+    setLoading(true)
      try {
        await signUp(state.email,state.password);
        axios.post('https://shoklin-server.onrender.com/customers',{
@@ -27,6 +30,7 @@ function Delivery () {
      } catch (err) {
       dispatch({type: 'SET_ERROR', Payload: 'Please check all inputs and try again'})
      }
+     setLoading(false)
   }
 
   return (

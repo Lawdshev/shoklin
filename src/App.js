@@ -16,44 +16,55 @@ import ProtectedRoute from './Utilities/protectedRoute';
 import Ironing from './Pages/Ironing'
 import About from './Pages/About Us';
 import Message from './Components/Modal';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { useLaundryContext } from './contexts/laundryContexts';
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <UserAuthContextProvider>
-        <MenuBar/>
-        <Message/>
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/Vip" element={<Vip/>} />
-          <Route path="/MyOrders" element={
-            <ProtectedRoute>
-              <MyOrders/>
+  const {loadingInProgress} = useLaundryContext()
+  return (<>
+    {loadingInProgress? 
+        <div className="loader-container flex items-center justify-center w-100 h-screen absolute z-10">
+          <ClipLoader color={'#488a8a'} size={150} />
+        </div>
+        :
+        <div className="App">
+        <Router>
+          <UserAuthContextProvider>
+          <MenuBar/>
+          <Message/>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/Vip" element={<Vip/>} />
+            <Route path="/MyOrders" element={
+              <ProtectedRoute>
+                <MyOrders/>
+              </ProtectedRoute>
+            } />
+            <Route path="/DryCleaning" element={
+              <ProtectedRoute>
+                <DryCleaning/>
             </ProtectedRoute>
-          } />
-          <Route path="/DryCleaning" element={
-            <ProtectedRoute>
-              <DryCleaning/>
-          </ProtectedRoute>
-          } />
-          <Route path="/Tailoring" element={<Tailoring/>} />
-          <Route path="/Ironing" element={
-            <ProtectedRoute>
-              <Ironing/>
-            </ProtectedRoute>
-          } />
-          <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/Logout" element={<Logout />} />
-          {/* <Route path="/Payment" element={<Payment/>} /> */}
-          <Route path="/Service" element={<Service/>} />
-          <Route path="/PriceList" element={<PriceList/>} />
-          <Route path="/About" element={<About/>} />
-        </Routes>
-        <Footer />
-        </UserAuthContextProvider>
-      </Router>  
-    </div>
+            } />
+            <Route path="/Tailoring" element={<Tailoring/>} />
+            <Route path="/Ironing" element={
+              <ProtectedRoute>
+                <Ironing/>
+              </ProtectedRoute>
+            } />
+            <Route path="/SignIn" element={<SignIn />} />
+            <Route path="/Logout" element={<Logout />} />
+            {/* <Route path="/Payment" element={<Payment/>} /> */}
+            <Route path="/Service" element={<Service/>} />
+            <Route path="/PriceList" element={<PriceList/>} />
+            <Route path="/About" element={<About/>} />
+          </Routes>
+          <Footer />
+          </UserAuthContextProvider>
+        </Router>  
+      </div>
+        }
+  </>
+    
   );
 }
 export default App;

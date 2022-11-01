@@ -6,9 +6,11 @@ import bgImg from '../Images/delivery.jpg'
 import { useReducer } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../contexts/authContext';
+import { useLaundryContext } from '../contexts/laundryContexts';
 import { initialState, signInReducer } from '../Reducers/signInReducer';
 
 function SignIn() {
+  const {setLoading} = useLaundryContext()
   const [state, dispatch] = useReducer(signInReducer, initialState);
   const {logIn} = useUserAuth();
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ function SignIn() {
     e.preventDefault();
      try {
        await logIn(state.email,state.password)
-       navigate('/MyOrders')
+       navigate('/MyOrders');
      } catch (err) {
       dispatch({type: "SET_ERROR"})
      }

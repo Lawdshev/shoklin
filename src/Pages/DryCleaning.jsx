@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLaundryContext } from "../contexts/laundryContexts";
 
 function DryCleaning() {
+  const {setLoading} = useLaundryContext()
   const navigate = useNavigate()
   const [numberOfItems, setNumberOfItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -16,8 +17,8 @@ function DryCleaning() {
   const [customer,setCustomer] = useState({});
   const [itemsList,setItemsList] = useState([])
  
-  console.log(itemsList);
   const findUser=()=>{
+    setLoading(true)
     fetch('https://shoklin-server.onrender.com/customers')
     .then(res =>  res.json())
     .then((data )=> {
@@ -36,9 +37,9 @@ function DryCleaning() {
       } catch (error) {
         console.log(error)
       }
-    }) 
+    })
+    setLoading(false) 
   }
-  
 
   const sumQty=() => {
     let sumItem = 0
@@ -57,11 +58,11 @@ function DryCleaning() {
       handleShow('You have not selected any item',"red");
       return
     }
+    setLoading(true)
     findUser()
+    navigate('/MyOrders');
     handleShow('Order placed succesfully',"green");
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000);
+    setLoading(false)
   }
 
   return (
