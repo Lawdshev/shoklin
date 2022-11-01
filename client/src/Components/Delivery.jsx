@@ -22,7 +22,7 @@ function Delivery () {
         email: state.email,
         phone: state.phone,
         address: state.address,
-      }).then((res=> console.log(res.data)))
+      }).then((res=> console.log('loading...')))
        navigate('/SignIn')
      } catch (err) {
       dispatch({type: 'SET_ERROR', Payload: 'Please check all inputs and try again'})

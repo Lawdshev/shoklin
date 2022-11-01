@@ -27,14 +27,12 @@ function Ironing() {
         navigate('/SignIn')
       }
       setCustomer(customer)
-      console.log(customer._id)
       try {
         axios.post(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
         typeOfOrder: "Dry Cleaning",
         numberOfClothes: numberOfItems,
         price: totalPrice
         })
-        console.log('found?');
       } catch (error) {
         console.log(error)
       }
