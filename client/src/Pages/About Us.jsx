@@ -9,8 +9,11 @@ function About() {
             </span>
             <div className='text-center'>
                 <h6 className='font-semibold text-xl '>About Sherif</h6>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima aspernatur, ipsa obcaecati voluptate vel recusandae molestias perspiciatis ratione reprehenderit inventore aliquam voluptatem ipsam vero, nam odit quibusdam, repellendus delectus accusantium. Unde magni natus optio numquam voluptas iure fuga illo. Architecto, consequatur. Autem quaerat hic dolores totam quod recusandae earum? Obcaecati!</p>
-            </div>   
+                <p>I am a goal-driven, quality-oriented professional with knowledge of web development. I am lifelong
+                    learner and a problem solver that always strives for mystery in my craft and offer full commitment in
+                    whatever I do and whoever I work with. As a software developer in any organization, I am very confident
+                    that I will be a great addition to the team. That said, i'm looking forward to feedbacks from you and i am open to work.</p>
+            </div>  
             <a href="mailto: o.d.ALsherif@gmail.com" ><i className="fa-solid fa-envelope"></i> Contact me</a>
         </div>
         <div className="w-full flex flex-col justify-around items-center lg:w-1/3 bg-[#54d2d2] p-3">
@@ -19,14 +22,13 @@ function About() {
             </span>
             <div className='text-center'>
                 <h6 className='font-semibold text-xl '>About Rasheedah</h6>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima aspernatur, ipsa obcaecati voluptate vel recusandae molestias perspiciatis ratione reprehenderit inventore aliquam voluptatem ipsam vero, nam odit quibusdam, repellendus delectus accusantium. Unde magni natus optio numquam voluptas iure fuga illo. Architecto, consequatur. Autem quaerat hic dolores totam quod recusandae earum? Obcaecati!</p>
-            </div>   
+                <p>A front end developer, passionate with building anything that lives on the web.
+                    A graduate of food science from University of ilorin.
+                    I'm detailed oriented and profound in creativity,I Strive to keep developing myself personally and so i am open to learning new things and I easily adapt to situations and environment. I look forward to hearing from you.</p>
+            </div>  
             <a href="mailto: imamrasheedatahmad1993@gmail.com" ><i class="fa-solid fa-envelope"></i> Contact me</a>
         </div>
-        
-
     </div>
   )
 }
-
 export default About;

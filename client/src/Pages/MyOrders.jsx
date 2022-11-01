@@ -45,8 +45,7 @@ function MyOrders() {
               <p>{customer.address}</p>
               <p>{customer.phone}</p> 
               <p>{customer.email}</p>
-            </div> 
-            
+            </div>   
           </div>
          
         </div>
@@ -60,8 +59,9 @@ function MyOrders() {
               </div> 
           {/* card section */}
           <div className='flex flex-col w-full lg:ml-4 lg:flex-row flex-wrap items-center '>
-            { tickets? tickets.map((ticket)=> <Ticket key={ticket._orderId} {...ticket}/>) : 'no order yet' }
+            { tickets.length > 0? tickets.map((ticket)=> <Ticket key={ticket._orderId} {...ticket}/>) : <p className='text-red-500 mx-auto text-sm italic font-normal'>You have not made any order</p> }
           </div>
+          <button className='text-white bg-[#54d2d2] w-48 md:w-56 py-2 rounded mt-3' onClick={()=> navigate('/Service')}>Make new Order</button>
         </div>
 
     </div>
