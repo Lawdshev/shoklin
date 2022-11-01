@@ -18,7 +18,7 @@ function DryCleaning() {
  
   console.log(itemsList);
   const findUser=()=>{
-    fetch('http://localhost:8080/customers')
+    fetch('https://shoklin-server.onrender.com/customers')
     .then(res =>  res.json())
     .then((data )=> {
       const customer = data.find(c=>c.email === user.email);
@@ -28,7 +28,7 @@ function DryCleaning() {
       }
       setCustomer(customer)
       try {
-        axios.post(`http://localhost:8080/customers/${customer._id}/addOrder`,{
+        axios.post(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
         typeOfOrder: "Dry Cleaning",
         numberOfClothes: numberOfItems,
         price: totalPrice
@@ -77,30 +77,35 @@ function DryCleaning() {
               })
             }
           </div>
-          <div className=" bg-white w-full lg:w-2/5 flex flex-col shadow-2xl py-2 items-center justify-around">
-              <div className='flex flex-col w-full'> 
-                <span className='flex justify-between w-full px-4'>
-                    <p className='font-semibold'>Category</p>
-                    <p className='font-semibold'>Number Of Items</p>
+          <div className=" bg-white w-full lg:w-2/5 flex flex-col shadow-2xl items-center justify-around">
+              <div className='flex flex-col w-full'>
+                <div className='items-center flex bg-[#e0dfdf] w-full h-12 justify-center'>
+                   <h1 className='text-xl font-semibold'>Order Details</h1>
+                </div> 
+                <span className='flex justify-between w-full px-4 mt-4'>
+                    <p className='font-semibold text-lg'>Category</p>
+                    <p className='font-semibold text-lg'>Number Of Items</p>
                   </span> 
                 {
                   itemsList.length > 0 && itemsList.map((item)=>{
-                   return item.qty > 0 && <span>
+                   return item.qty > 0 && <span className='px-16 flex justify-between mt-2 text-md font-medium'>
                     <p>{item.name}</p>
                     <p>{item.qty}</p>
                    </span> 
                   })
                 }
+                <div className='bg-[#e0dfdf] flex flex-col items-center mt-8 justify-around py-4'>
                   <span className='flex justify-between w-full px-4 mt-2'>
-                    <p  className='font-semibold'>Total Number of items:</p>
-                    <p  className='font-semibold ml-5'>{numberOfItems}</p>
-                  </span>
-                  <span className='flex justify-between w-full px-4'>
-                    <p className='font-semibold'>Total Price:</p>
-                    <p className='font-semibold'>N{totalPrice}</p>
-                  </span>
+                      <p  className='font-semibold text-lg'>Total Number of items:</p>
+                      <p  className='font-semibold text-lg'>{numberOfItems}</p>
+                    </span>
+                    <span className='flex justify-between w-full px-4'>
+                      <p className='font-semibold text-lg'>Total Price:</p>
+                      <p className='font-semibold text-lg'>N{totalPrice}</p>
+                    </span>
+                  <button className='bg-black py-2 px-4 text-white rounded-xl' onClick={handleOrder}>Place Order</button>
+                </div>
               </div>
-             <button className='bg-[#54d2d2] py-2 px-4 rounded-xl' onClick={handleOrder}>Place Order</button>
           </div>
       </div>
     </div>

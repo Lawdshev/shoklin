@@ -17,7 +17,7 @@ function Delivery () {
     dispatch({type: 'SET_ERROR', Payload: ''})
      try {
        await signUp(state.email,state.password);
-       axios.post('http://localhost:8080/customers',{
+       axios.post('https://shoklin-server.onrender.com/customers',{
         name: state.name,
         email: state.email,
         phone: state.phone,
