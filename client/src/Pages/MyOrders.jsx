@@ -37,8 +37,8 @@ function MyOrders() {
             <div className=' p-2 flex flex-col justify-around h-60'>
               <p><i className="fa-solid fa-user"></i></p>
               <p><i className="fa-solid fa-location-dot"></i></p>
-              <p><i class="fa-solid fa-phone"></i></p>
-              <p><i class="fa-solid fa-envelope"></i></p> 
+              <p><i className="fa-solid fa-phone"></i></p>
+              <p><i className="fa-solid fa-envelope"></i></p> 
             </div>
             <div  className=' ml-1 font-semibold p-2 flex flex-col justify-around h-60'>
               <p>{customer.name}</p>
