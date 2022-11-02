@@ -29,7 +29,7 @@ function DryCleaning() {
       }
       setCustomer(customer)
       try {
-        axios.post(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
+        axios.put(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
         typeOfOrder: "Dry Cleaning",
         numberOfClothes: numberOfItems,
         price: totalPrice

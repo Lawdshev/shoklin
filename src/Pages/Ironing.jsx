@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios"
 import OrderComp from '../Components/orderComp';
 import {ironingPriceList} from '../Utilities/priceList';
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import { useUserAuth } from '../contexts/authContext';
 import { useNavigate } from 'react-router-dom';
 import { useLaundryContext } from "../contexts/laundryContexts";
@@ -15,7 +15,7 @@ function Ironing() {
   const {user} = useUserAuth();
   const {handleShow} = useLaundryContext()
   const [customer,setCustomer] = useState({});
-  const [itemsList,setItemsList] = useState([{}])
+  const [itemsList,setItemsList] = useState([{}]);
  
   console.log(itemsList);
   const findUser=()=>{
@@ -30,8 +30,8 @@ function Ironing() {
       }
       setCustomer(customer)
       try {
-        axios.post(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
-        typeOfOrder: "Dry Cleaning",
+        axios.put(`https://shoklin-server.onrender.com/customers/${customer._id}/addOrder`,{
+        typeOfOrder: "Flat Ironing",
         numberOfClothes: numberOfItems,
         price: totalPrice
         })
@@ -66,8 +66,6 @@ function Ironing() {
     navigate('/MyOrders')
   }
   
-
-
   return (
     <div className='min-h-screen p-4 flex flex-col items-center'>
       <h1 className='text-xl lg:text-2xl font-bold'>Ironing</h1>
