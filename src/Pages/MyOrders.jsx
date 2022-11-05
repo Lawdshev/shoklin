@@ -10,8 +10,8 @@ function MyOrders() {
   const [tickets,setTickets] = useState([]);
   const {handleShow} = useLaundryContext();
   const {user} = useUserAuth();
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     setLoading(true)
     fetch('https://shoklin-server.onrender.com/customers')
@@ -24,8 +24,7 @@ function MyOrders() {
       }
       setCustomer(customer)
       setTickets(customer.tickets)
-    })  
-    setLoading(false)
+    }).then( setLoading(false))  
   }, [user.email])
 
 
